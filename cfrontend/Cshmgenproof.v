@@ -1761,7 +1761,7 @@ Proof.
   intros. inv H.
   exploit function_ptr_translated; eauto. intros (cu & tf & A & B & C).
   assert (D: Genv.find_symbol tge (AST.prog_main tprog) = Some b).
-  { destruct TRANSL as (P & Q & R). rewrite Q. rewrite symbols_preserved. auto. }
+  { destruct (TRANSL) as (P & Q & R). rewrite Q. rewrite symbols_preserved. auto. }
   assert (E: funsig tf = signature_of_type Tnil type_int32s cc_default).
   { eapply transl_fundef_sig2; eauto. }
   econstructor; split.
